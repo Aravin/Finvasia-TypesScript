@@ -22,5 +22,11 @@
   "bugs": {
     "url": "https://github.com/Aravin/Finvasia-TypesScript/issues"
   },
-  "homepage": "https://github.com/Aravin/Finvasia-TypesScript#readme"
+  "homepage": "https://github.com/Aravin/Finvasia-TypesScript#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.24"
+  }
 }
