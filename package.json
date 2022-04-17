@@ -1,0 +1,26 @@
+{
+  "name": "finvasia-typesscript",
+  "version": "1.0.0",
+  "description": "Finvasia TypeScript",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aravin/Finvasia-TypesScript.git"
+  },
+  "keywords": [
+    "finvasia",
+    "finvasia",
+    "api",
+    "finvasia",
+    "typescript"
+  ],
+  "author": "Aravind A",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aravin/Finvasia-TypesScript/issues"
+  },
+  "homepage": "https://github.com/Aravin/Finvasia-TypesScript#readme"
+}
