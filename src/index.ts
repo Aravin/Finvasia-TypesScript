@@ -5,7 +5,9 @@ import { appConfig } from './config/appConfig';
 // routes
 import { router as loginRouter} from './routes/login';
 import { router as logoutRouter} from './routes/logout';
-import { router as searchScript} from './routes/scripts/searh';
+import { router as searchScript} from './routes/scripts/search';
+import { router as scriptInfo} from './routes/scripts/info';
+import { router as scriptQuote} from './routes/scripts/quote';
 
 const app = express();
 app.use(express.json());
@@ -18,6 +20,8 @@ app.get('/', (req, res) => {
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/scripts/search', searchScript);
+app.use('/scripts/info', scriptInfo);
+app.use('/scripts/quote', scriptQuote);
 
 // catch 404 and forward to error handler
 app.use((req: Request, res: Response, next: NextFunction) => {
