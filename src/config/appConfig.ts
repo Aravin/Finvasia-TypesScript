@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export const appConfig = {
+    port: process.env.PORT || 3000,
     basePath: process.env.FINVASIA_BASEPATH,
     apkVersion: process.env.FINVASIA_APK_VERSION,
     source: process.env.FINVASIA_SOURCE,

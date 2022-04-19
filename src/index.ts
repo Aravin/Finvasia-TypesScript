@@ -1,33 +1,35 @@
-import axios from 'axios';
-import { apiPath } from './config/apiPath';
+import express, { Request, Response, NextFunction } from 'express';
+import createError from 'http-errors';
 import { appConfig } from './config/appConfig';
-import { createHash } from 'crypto';
+import { router as loginRouter} from './routes/login';
+import { router as logoutRouter} from './routes/logout';
 
-const login = async () => {
+const app = express();
+app.use(express.json());
+const port = appConfig.port;
 
-    const pwdHash = createHash('sha256').update(appConfig.pwd as string).digest('hex');
-    const vendorCodeHash = createHash('sha256').update(appConfig.userId as string).digest('hex');
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+});
 
-    const loginRequest = {
-        apkversion: appConfig.apkVersion,
-        uid: appConfig.userId,
-        pwd: pwdHash,
-        factor2: appConfig.login2fa,
-        vc: appConfig.vendorCode,
-        imei: appConfig.imei,
-        source: appConfig.source,
-        appKey: vendorCodeHash,
-    };
+app.use('/login', loginRouter);
+app.use('/logout', logoutRouter);
 
-    const jData = 'jData=' + JSON.stringify(loginRequest);
+// catch 404 and forward to error handler
+app.use((req: Request, res: Response, next: NextFunction) => {
+    next(createError(404));
+});
 
-    try {
-        const result = await axios.post(appConfig.basePath + apiPath.login, jData);
-        console.log(result);
-    }
-    catch (err: any) {
-        console.log(err);
-    }
-};
+// error handler
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+    console.log('error middleware')
+    res.status(err.status || 500).send(err.message);
+});
 
-login();
+
+app.listen(port, () => {
+    console.log(`Finvasia TypeScript app listening on port ${port}`)
+});
