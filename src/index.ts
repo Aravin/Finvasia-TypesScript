@@ -12,6 +12,7 @@ import { router as accountLimit} from './routes/account/limit';
 import { router as orderList} from './routes/orders/list';
 import { router as ordersPosition} from './routes/orders/position';
 import { router as ordersTrade} from './routes/orders/trade';
+import { router as orderPlace} from './routes/orders/place';
 
 const app = express();
 app.use(express.json());
@@ -30,6 +31,7 @@ app.use('/account/limit', accountLimit);
 app.use('/orders/list', orderList);
 app.use('/orders/position', ordersPosition);
 app.use('/orders/trade', ordersTrade);
+app.use('/orders/place', orderPlace);
 
 // catch 404 and forward to error handler
 app.use((req: Request, res: Response, next: NextFunction) => {

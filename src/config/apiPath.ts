@@ -8,4 +8,5 @@ export const apiPath = {
     ordersList: '/OrderBook',
     ordersPosition: '/PositionBook',
     ordersTrade: '/TradeBook',
+    orderPlace: '/PlaceOrder',
 }
