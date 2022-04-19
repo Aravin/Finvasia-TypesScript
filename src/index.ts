@@ -1,8 +1,11 @@
 import express, { Request, Response, NextFunction } from 'express';
 import createError from 'http-errors';
 import { appConfig } from './config/appConfig';
+
+// routes
 import { router as loginRouter} from './routes/login';
 import { router as logoutRouter} from './routes/logout';
+import { router as searchScript} from './routes/scripts/searh';
 
 const app = express();
 app.use(express.json());
@@ -14,6 +17,7 @@ app.get('/', (req, res) => {
 
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
+app.use('/scripts/search', searchScript);
 
 // catch 404 and forward to error handler
 app.use((req: Request, res: Response, next: NextFunction) => {
