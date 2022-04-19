@@ -4,4 +4,5 @@ export const apiPath = {
     searchScript: '/SearchScrip',
     scriptInfo: '/GetSecurityInfo',
     scriptQuote: '/GetQuotes',
+    accountLimit: '/Limits',
 }
