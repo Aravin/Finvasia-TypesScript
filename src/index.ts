@@ -9,6 +9,9 @@ import { router as searchScript} from './routes/scripts/search';
 import { router as scriptInfo} from './routes/scripts/info';
 import { router as scriptQuote} from './routes/scripts/quote';
 import { router as accountLimit} from './routes/account/limit';
+import { router as orderList} from './routes/orders/list';
+import { router as ordersPosition} from './routes/orders/position';
+import { router as ordersTrade} from './routes/orders/trade';
 
 const app = express();
 app.use(express.json());
@@ -24,6 +27,9 @@ app.use('/scripts/search', searchScript);
 app.use('/scripts/info', scriptInfo);
 app.use('/scripts/quote', scriptQuote);
 app.use('/account/limit', accountLimit);
+app.use('/orders/list', orderList);
+app.use('/orders/position', ordersPosition);
+app.use('/orders/trade', ordersTrade);
 
 // catch 404 and forward to error handler
 app.use((req: Request, res: Response, next: NextFunction) => {
