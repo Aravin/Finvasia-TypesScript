@@ -1,3 +1,4 @@
+import serverless from 'serverless-http';
 import express, { Request, Response, NextFunction } from 'express';
 import createError from 'http-errors';
 import { appConfig } from './config/appConfig';
@@ -19,7 +20,11 @@ app.use(express.json());
 const port = appConfig.port;
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('Finvasia API Service!')
+});
+
+app.get('/test', (req, res) => {
+    res.send('Test API Service!')
 });
 
 app.use('/login', loginRouter);
@@ -48,6 +53,8 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 });
 
 
-app.listen(port, () => {
-    console.log(`Finvasia TypeScript app listening on port ${port}`)
-});
+// app.listen(port, () => {
+//     console.log(`Finvasia TypeScript app listening on port ${port}`)
+// });
+
+module.exports.handler = serverless(app);

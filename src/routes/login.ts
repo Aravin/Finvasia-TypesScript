@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
 
 const login = async (body: Record<string, any>) => {
 
-    const pwdHash = createHash('sha256').update(appConfig.pwd as string).digest('hex');
+    const pwdHash = createHash('sha256').update(body.pwd as string).digest('hex');
     const appKeyHash = createHash('sha256').update(`${body.userId}|${body.apiKey}`).digest('hex');
 
     const loginRequest = {

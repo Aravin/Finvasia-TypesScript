@@ -1,0 +1,31 @@
+service: algo-trade-finvasia-api
+
+useDotenv: true
+
+provider:
+  name: aws
+  region: ap-south-1
+  stackName: algo-trade-finvasia-api-stack
+  runtime: nodejs14.x
+  timeout: 60 # optional, in seconds, default is 6
+  versionFunctions: false # optional, default is true
+  tracing:
+    lambda: true # optional, enables tracing for all functions (can be true (true equals 'Active') 'Active' or 'PassThrough')
+
+functions:
+  app:
+    handler: dist/index.handler # required, handler set in AWS Lambda
+    url: true
+    name: ${sls:stage}-algo-trade-finvasia-api # optional, Deployed Lambda name
+    description: Finvasia JavaScript API # optional, Description to publish to AWS
+    timeout: 60 # optional, in seconds, default is 6
+    events:
+      - http:
+          path: /
+          method: GET
+      - http:
+          path: /{proxy+}
+          method: ANY
+
+plugins:
+  - serverless-offline
