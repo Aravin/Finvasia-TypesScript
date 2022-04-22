@@ -2,21 +2,26 @@ import serverless from 'serverless-http';
 import express, { Request, Response, NextFunction } from 'express';
 import createError from 'http-errors';
 import { appConfig } from './config/appConfig';
+import helmet from 'helmet';
 
 // routes
-import { router as loginRouter} from './routes/login';
-import { router as logoutRouter} from './routes/logout';
-import { router as searchScript} from './routes/scripts/search';
-import { router as scriptInfo} from './routes/scripts/info';
-import { router as scriptQuote} from './routes/scripts/quote';
-import { router as accountLimit} from './routes/account/limit';
-import { router as orderList} from './routes/orders/list';
-import { router as ordersPosition} from './routes/orders/position';
-import { router as ordersTrade} from './routes/orders/trade';
-import { router as orderPlace} from './routes/orders/place';
+import { router as loginRouter } from './routes/login';
+import { router as logoutRouter } from './routes/logout';
+import { router as searchScript } from './routes/scripts/search';
+import { router as scriptInfo } from './routes/scripts/info';
+import { router as scriptQuote } from './routes/scripts/quote';
+import { router as accountLimit } from './routes/account/limit';
+import { router as orderList } from './routes/orders/list';
+import { router as ordersPosition } from './routes/orders/position';
+import { router as ordersTrade } from './routes/orders/trade';
+import { router as orderPlace } from './routes/orders/place';
+import { apiKeyValidation } from './middlewares/apiKeyValidation';
 
 const app = express();
 app.use(express.json());
+app.use(apiKeyValidation)
+app.use(helmet())
+
 const port = appConfig.port;
 
 app.get('/', (req, res) => {
