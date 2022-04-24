@@ -18,7 +18,7 @@ functions:
     url: true
     name: ${sls:stage}-algo-trade-finvasia-api # optional, Deployed Lambda name
     description: Finvasia JavaScript API # optional, Description to publish to AWS
-    timeout: 60 # optional, in seconds, default is 6
+    timeout: 30 # optional, in seconds, default is 6
     events:
       - http:
           path: /

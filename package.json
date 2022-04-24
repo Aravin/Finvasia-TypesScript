@@ -4,7 +4,10 @@
   "description": "Finvasia TypeScript",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsc && node dist/index.js",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "deploy": "tsc && sls deploy"
   },
   "repository": {
     "type": "git",
