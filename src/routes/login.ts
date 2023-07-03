@@ -43,6 +43,6 @@ const login = async (body: Record<string, any>) => {
             console.log('Error', err.message);
         }
         // console.log(err.config); // for debug
-        return { status: err.response.status || 500, data: err.response.data || err.message};
+        return { status: err?.response?.status || 500, data: err?.message};
     }
 };
