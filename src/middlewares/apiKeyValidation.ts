@@ -4,9 +4,9 @@ import { appConfig } from "../config/appConfig";
 export const apiKeyValidation = (req: Request, res: Response, next: NextFunction) => {
     const apiKey = req.headers['x-api-key'];
 
-    if (apiKey === appConfig.apiKey) {
-        next()
-    }
-    
-    res.status(403).send('403 Forbidden');
+    if (apiKey !== appConfig.apiKey) {
+        return res.status(403).send('403 Forbidden - Invalid API key');
+    } 
+
+    next();
 }
